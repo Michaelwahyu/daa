@@ -1,0 +1,15 @@
+while n ≠ 0 do
+r ← m mod n
+m ← n
+n ← r
+return m
+
+define swap (x,y)
+buffer = x
+x = y
+y = buffer
+
+input a dan t (5 dan 3)
+luas = a*t (5*3)
+print luas (15)
+end
