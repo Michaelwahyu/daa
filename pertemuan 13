@@ -1,0 +1,205 @@
+def bfs(graph, start):
+    visited = []
+    queue = [start]
+    
+    while queue:
+        node = queue.pop(0)
+        if node not in visited:
+            visited.append(node)
+            neighbours = graph[node]
+            for neighbour in neighbours:
+                queue.append(neighbour)
+    return visited
+graph = { 'Amin' : { 'Wasim', 'Nick', 'Mike'},
+          'Wasim' : {'Imran', 'Amin'}, 
+          'Imran' : {'Wasim', 'Faras'},
+          'Faras' : {'Imran'},
+          'Mike' : {'Amin'},
+          'Nick' : {'Amin'}}
+bfs(graph, 'Amin')
+['Amin', 'Mike', 'Nick', 'Wasim', 'Imran', 'Faras']
+# O amin ----------------
+# |            |         |
+# O wasim      O nick    O mike
+# |
+# O imran
+# |
+# O faras
+
+bfs(graph, 'Amin')
+['Amin', 'Mike', 'Nick', 'Wasim', 'Imran', 'Faras']
+# O wasim -----
+# |            |         
+# O imran      O amin ----   
+# |            |          |
+# O faras      O nick     O mike
+
+
+bfs(graph, 'Wasim')
+['Wasim', 'Amin', 'Imran', 'Mike', 'Nick', 'Faras']
+# O faras
+# |                    
+# O imran      
+# |                      
+# O wasim      O nick     O mike
+# |            |          |
+# O amin ------------------
+
+bfs(graph, 'Faras')
+['Faras', 'Imran', 'Wasim', 'Amin', 'Mike', 'Nick']
+graph = {'Rektor' : {'Warek 1', 'Warek 2'},
+         'Warek 1' : {'Rektor'},
+         'Warek 2' : {'Rektor', 'Kaprodi 1', 'Kaprodi 2', 'Kaprodi 3'},
+         'Kaprodi 1' : {'Warek 2', 'Dosen 1', 'Dosen 2', 'Dosen 3'}, 
+         'Kaprodi 2' : {'Warek 2', 'Dosen 4', 'Dosen 5'},
+         'Kaprodi 3' : {'Warek 2', 'Dosen 6', 'Dosen 7'},
+         'Dosen 1' : {'Kaprodi 1', 'Dosen 2', 'Dosen 3'},
+         'Dosen 4' : {'Kaprodi 2', 'Dosen 5'},
+         'Dosen 6' : {'Kaprodi 3', 'Dosen 7'},
+         'Dosen 2' : {'Kaprodi 1', 'Dosen 1', 'Dosen 3'},
+         'Dosen 5' : {'Kaprodi 2', 'Dosen 4'},
+         'Dosen 7' : {'Kaprodi 3', 'Dosen 6'},
+         'Dosen 3' : {'Kaprodi 1', 'Dosen 1', 'Dosen 2'}}
+bfs(graph, 'Rektor')
+['Rektor',
+ 'Warek 1',
+ 'Warek 2',
+ 'Kaprodi 2',
+ 'Kaprodi 3',
+ 'Kaprodi 1',
+ 'Dosen 4',
+ 'Dosen 5',
+ 'Dosen 6',
+ 'Dosen 7',
+ 'Dosen 1',
+ 'Dosen 2',
+ 'Dosen 3']
+def dfs(graph, start, visited=None):
+    if visited is None:
+        visited = set()
+    visited.add(start)
+    print(start)
+    for next in graph[start] - visited:
+        dfs(graph, next, visited)
+    return visited
+graph = { 'Amin' : { 'Wasim', 'Nick', 'Mike'},
+          'Wasim' : {'Imran', 'Amin'}, 
+          'Imran' : {'Wasim', 'Faras'},
+          'Faras' : {'Imran'},
+          'Mike' : {'Amin'},
+          'Nick' : {'Amin'}}
+# O amin ---------------------
+# |              |           |
+# O wasim        O nick      O mike
+# |
+# O imran
+# |
+# O faras
+#
+# turun dari amin ke faras, geser ke nic & mike
+dfs(graph, 'Amin')
+Amin
+Mike
+Nick
+Wasim
+Imran
+Faras
+{'Amin', 'Faras', 'Imran', 'Mike', 'Nick', 'Wasim'}
+# O amin ---------------------
+# |              |           |
+# O wasim        O nick      O mike
+# |
+# O imran
+# |
+# O faras
+#
+# turun dari amin ke faras, geser ke nic & mike
+dfs(graph, 'Wasim')
+Wasim
+Amin
+Mike
+Nick
+Imran
+Faras
+{'Amin', 'Faras', 'Imran', 'Mike', 'Nick', 'Wasim'}
+# O amin ---------------------
+# |              |           |
+# O wasim        O nick      O mike
+# |
+# O imran
+# |
+# O faras
+#
+# turun dari amin ke faras, geser ke nic & mike
+dfs(graph, 'Faras')
+Faras
+Imran
+Wasim
+Amin
+Mike
+Nick
+{'Amin', 'Faras', 'Imran', 'Mike', 'Nick', 'Wasim'}
+# O amin ---------------------
+# |              |           |
+# O wasim        O nick      O mike
+# |
+# O imran
+# |
+# O faras
+#
+# turun dari amin ke faras, geser ke nic & mike
+dfs(graph, 'Nick')
+Nick
+Amin
+Mike
+Wasim
+Imran
+Faras
+{'Amin', 'Faras', 'Imran', 'Mike', 'Nick', 'Wasim'}
+graph = {'Rektor' : {'Warek 1', 'Warek 2'},
+         'Warek 1' : {'Rektor'},
+         'Warek 2' : {'Rektor', 'Kaprodi 1', 'Kaprodi 2', 'Kaprodi 3'},
+         'Kaprodi 1' : {'Warek 2', 'Dosen 1', 'Dosen 2', 'Dosen 3'}, 
+         'Kaprodi 2' : {'Warek 2', 'Dosen 4', 'Dosen 5'},
+         'Kaprodi 3' : {'Warek 2', 'Dosen 6', 'Dosen 7'},
+         'Dosen 1' : {'Kaprodi 1', 'Dosen 2', 'Dosen 3'},
+         'Dosen 4' : {'Kaprodi 2', 'Dosen 5'},
+         'Dosen 6' : {'Kaprodi 3', 'Dosen 7'},
+         'Dosen 2' : {'Kaprodi 1', 'Dosen 1', 'Dosen 3'},
+         'Dosen 5' : {'Kaprodi 2', 'Dosen 4'},
+         'Dosen 7' : {'Kaprodi 3', 'Dosen 6'},
+         'Dosen 3' : {'Kaprodi 1', 'Dosen 1', 'Dosen 2'}}
+
+dfs(graph, 'Rektor')
+Rektor
+Warek 1
+Warek 2
+Kaprodi 2
+Dosen 4
+Dosen 5
+Dosen 5
+Kaprodi 3
+Dosen 7
+Dosen 6
+Dosen 6
+Kaprodi 1
+Dosen 1
+Dosen 2
+Dosen 3
+Dosen 3
+Dosen 2
+Dosen 3
+{'Dosen 1',
+ 'Dosen 2',
+ 'Dosen 3',
+ 'Dosen 4',
+ 'Dosen 5',
+ 'Dosen 6',
+ 'Dosen 7',
+ 'Kaprodi 1',
+ 'Kaprodi 2',
+ 'Kaprodi 3',
+ 'Rektor',
+ 'Warek 1',
+ 'Warek 2'}
+ 
