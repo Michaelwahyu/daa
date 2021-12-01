@@ -1,0 +1,135 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+vertices = range(1,10)
+edges = [(7,2), (2,3), (7,4),(4,5), (7,3), (7,5),
+        (1,6), (1,7), (2,8), (2,9)]
+G = nx.Graph()
+G.add_nodes_from(vertices)
+G.add_nodes_from(edges)
+pos=nx.spring_layout(G)
+nx.draw_networkx_nodes(G,pos,
+                       nodelist=[1, 4, 3, 8, 9],
+                       node_color='g',
+                       node_size=1300)
+
+nx.draw_networkx_nodes(G,pos,
+                       nodelist=[2, 5, 6, 7],
+                       node_color='r',
+                       node_size=1300)
+
+nx.draw_networkx_edges(G,pos,edges,width=3,alpha=0.5,edge_color='b')
+labels={}
+labels[1]=r'1 NF'
+labels[2]=r'2 F'
+labels[3]=r'3 NF'
+labels[4]=r'4 NF'
+labels[5]=r'5 F'
+labels[6]=r'6 F'
+labels[7]=r'7 F'
+labels[8]=r'8 NF'
+labels[9]=r'9 NF'
+
+nx.draw_networkx_labels(G,pos,labels,font_size=16)
+{1: Text(0.8095949005349836, 0.5276840484433291, '1 NF'),
+ 2: Text(1.0, -0.10797583123744202, '2 F'),
+ 3: Text(0.6360231398316588, -0.581136466797804, '3 NF'),
+ 4: Text(-0.8560271223191469, 0.48082286091881216, '4 NF'),
+ 5: Text(-0.7687230282365943, -0.6816243567848401, '5 F'),
+ 6: Text(0.8720927250292406, -0.41008350191356086, '6 F'),
+ 7: Text(-0.13984247516035336, -0.9225909522478277, '7 F'),
+ 8: Text(-0.30518051476210595, 0.9851204741316063, '8 NF'),
+ 9: Text(0.1931529826421225, -0.9359272805265255, '9 NF')}
+
+vertices = range (1,11)
+edges = [(1,2), (1,7), (7,8), (7,9), (8,9), (7,10),
+        (7,6), (6,2), (2,3), (3,6), (3,4), (6,5)]
+
+G = nx.Graph()
+G.add_nodes_from(vertices)
+G.add_edges_from(edges)
+pos = nx.spring_layout(G)
+
+nx.draw_networkx_nodes ( G, pos, nodelist = [2, 3, 6, 8, 9], label = True, node_color = 'g', node_size = 1500)
+
+nx.draw_networkx_nodes ( G, pos, nodelist = [1, 4, 5, 7,10], label = True, node_color = 'r', node_size = 1500)
+
+nx.draw_networkx_edges (G, pos, width = 3, alpha = 1, edge_color = 'b')
+labels={}
+labels[1]=r'1 F'
+labels[2]=r'2 NF'
+labels[3]=r'3 NF'
+labels[4]=r'4 F'
+labels[5]=r'5 F'
+labels[6]=r'6 NF'
+labels[7]=r'7 F'
+labels[8]=r'8 NF'
+labels[9]=r'9 NF'
+labels[10]=r'10 F'
+
+nx.draw_networkx_labels(G,pos,labels,font_size=16)
+{1: Text(-0.09450386398671969, -0.27731393214595923, '1 F'),
+ 2: Text(-0.3830600580368984, -0.004133408729240769, '2 NF'),
+ 3: Text(-0.597890736626097, 0.2891657532639646, '3 NF'),
+ 4: Text(-1.0, 0.4596528663574384, '4 F'),
+ 5: Text(-0.028209423349989528, 0.6415200797702768, '5 F'),
+ 6: Text(-0.1123927594366338, 0.2049983042188711, '6 NF'),
+ 7: Text(0.3238611659997036, -0.21354174464605602, '7 F'),
+ 8: Text(0.737853672690271, -0.09644183360827396, '8 NF'),
+ 9: Text(0.7424635390418421, -0.34314632473794043, '9 NF'),
+ 10: Text(0.4118784637045213, -0.6607597597430808, '10 F')}
+
+vertices = range(1,14)
+edges = [(1,3), (2,3), (12,3),(11,3), (10,3), (1,2),
+        (2,12), (12,13), (12,11), (11,10), (3,4), (4,5),
+        (4,6), (4,7), (7,5),(5,6), (6,9), (5,8), (7,8), (8,9)]
+
+G = nx.Graph()
+
+G.add_nodes_from(vertices)
+G.add_nodes_from(edges)
+pos=nx.spring_layout(G)
+
+nx.draw_networkx_nodes(G,pos,
+                       nodelist=[13, 4, 5, 6, 7, 9, 8],
+                       label=True,
+                       node_color='g',
+                       node_size=1300)
+
+nx.draw_networkx_nodes(G,pos,
+                       nodelist=[1, 2, 3, 12, 11, 10],
+                       label=True,
+                       node_color='r',
+                       node_size=1300)
+
+nx.draw_networkx_edges(G,pos,edges,width=3,alpha=1,edge_color='b')
+labels={}
+labels[1]=r'1 F'
+labels[2]=r'2 F'
+labels[3]=r'3 F'
+labels[4]=r'4 NF'
+labels[5]=r'5 NF'
+labels[6]=r'6 NF'
+labels[7]=r'7 NF'
+labels[8]=r'8 NF'
+labels[9]=r'9 NF'
+labels[10]=r'10 F'
+labels[11]=r'11 F'
+labels[12]=r'12 F'
+labels[13]=r'13 NF'
+
+nx.draw_networkx_labels(G,pos,labels,font_size=14)
+{1: Text(-0.1477233611426744, -0.9688806041291421, '1 F'),
+ 2: Text(0.7553886217781444, 0.5222917588538392, '2 F'),
+ 3: Text(0.021266956291632586, 0.862818836164075, '3 F'),
+ 4: Text(-0.09066531759326708, 0.9999999999999999, '4 NF'),
+ 5: Text(-0.3241140069331773, -0.8902814924658405, '5 NF'),
+ 6: Text(-0.9503992500944197, -0.0682533797687719, '6 NF'),
+ 7: Text(-0.916708589583488, -0.2650878896191469, '7 NF'),
+ 8: Text(-0.630578907187277, -0.7796110378615331, '8 NF'),
+ 9: Text(0.663899478739672, -0.6481399597020824, '9 NF'),
+ 10: Text(-0.4813022731642776, -0.7811586191522047, '10 F'),
+ 11: Text(-0.7904910484401027, -0.39937622202400397, '11 F'),
+ 12: Text(-0.9448402338779038, 0.13357618934274304, '12 F'),
+ 13: Text(0.5576385174564857, -0.8139345906369937, '13 NF')}
+
+ 
